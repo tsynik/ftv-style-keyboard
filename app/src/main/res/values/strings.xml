@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">FireTV style Keyboard</string>
+    <string name="app_layout_pref_key" translatable="false">app_layout</string>
+    <string name="app_layout_title">Keyboard Layout</string>
+    <string-array name="app_layout_entries">
+        <item>ABC</item>
+        <item>QWERTY</item>
+    </string-array>
+    <string-array name="app_layout_entries_values">
+        <item>abc</item>
+        <item>qwerty</item>
+    </string-array>
+    <string name="about">About</string>
+    <string name="simple_ime">FireTV style Keyboard</string>
+    <string name="settings_title">Settings</string>
+    <string name="subtype_en_US">ABC</string>
+    <string name="previous">Back</string>
+    <string name="space">Space</string>
+    <string name="delete">Delete</string>
+    <string name="clear">Clear</string>
+    <string name="next">Enter</string>
+    <string name="go">Go</string>
+    <string name="search">Search</string>
+    <string name="send">Send</string>
+    <string name="app_settings">Keyboard Settings</string>
+    <string name="donate">PayPal</string>
+    <string name="keyboard_layout_summary">Set Keyboard layout.</string>
+    <string name="keyboard_layout_title">Keyboard layout</string>
+    <string name="language_summary">Set language manually.</string>
+    <string name="language_title">Language</string>
+    <string name="show_app_label_pref_key" translatable="false">show_app_label</string>
+    <string name="show_app_label_title">Show Icon</string>
+    <string name="show_app_label_summary">Show app icon in Launcher</string>
+</resources>

@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/grid_all"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/keyboard_background"
+    android:columnCount="10"
+    android:focusable="true"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/keyboard_padding"
+    android:paddingTop="@dimen/keyboard_padding"
+    android:paddingRight="@dimen/keyboard_padding"
+    android:paddingBottom="@dimen/keyboard_padding_bottom">
+    <!--android:focusableInTouchMode="true"-->
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr00"
+        android:background="@drawable/btn_shape_ftv"
+        android:nextFocusLeft="@+id/cr09"
+        android:nextFocusUp="@+id/back" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr01"
+        android:background="@drawable/btn_shape_ftv"
+        android:nextFocusUp="@+id/back" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr02"
+        android:background="@drawable/btn_shape_ftv"
+        android:nextFocusUp="@+id/back" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr03"
+        android:background="@drawable/btn_shape_ftv"
+        android:nextFocusUp="@+id/back" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr04"
+        android:background="@drawable/btn_shape_ftv"
+        android:nextFocusUp="@+id/cursorLeft" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr05"
+        android:background="@drawable/btn_shape_ftv"
+        android:nextFocusUp="@+id/cursorRight" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr06"
+        android:background="@drawable/btn_shape_ftv"
+        android:nextFocusUp="@+id/next" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr07"
+        android:background="@drawable/btn_shape_ftv"
+        android:nextFocusUp="@+id/next"
+        android:tag="cr07" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr08"
+        android:background="@drawable/btn_shape_ftv"
+        android:nextFocusUp="@+id/next" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr09"
+        android:background="@drawable/btn_shape_ftv"
+        android:nextFocusRight="@+id/cr00"
+        android:nextFocusUp="@+id/next" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr10"
+        android:background="@drawable/btn_shape_ftv"
+        android:nextFocusLeft="@+id/cr19" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr11"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr12"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr13"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr14"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr15"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr16"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr17"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr18"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr19"
+        android:background="@drawable/btn_shape_ftv"
+        android:nextFocusRight="@+id/cr10" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr20"
+        android:background="@drawable/btn_shape_ftv"
+        android:nextFocusLeft="@+id/cr29" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr21"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr22"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr23"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr24"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr25"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr26"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr27"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr28"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr29"
+        android:background="@drawable/btn_shape_ftv"
+        android:nextFocusRight="@+id/cr20" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr30"
+        android:background="@drawable/btn_shape_ftv"
+        android:nextFocusLeft="@+id/cr39" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr31"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr32"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr33"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr34"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr35"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr36"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr37"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr38"
+        android:background="@drawable/btn_shape_ftv" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cr39"
+        android:background="@drawable/btn_shape_ftv"
+        android:nextFocusRight="@id/cr30" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/lang"
+        android:layout_row="5"
+        android:layout_column="0"
+        android:layout_columnSpan="2"
+        android:layout_gravity="fill"
+        android:background="@drawable/btn_shape_ftv_menu"
+        android:drawableStart="@drawable/keyboard_key_icon_menu"
+        android:drawableLeft="@drawable/keyboard_key_icon_menu"
+        android:nextFocusLeft="@+id/clear"
+        app:iconPadding="@dimen/keyboard_icon_padding" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/shift"
+        android:layout_row="5"
+        android:layout_column="2"
+        android:background="@drawable/btn_shape_ftv_menu" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/symbols"
+        android:layout_row="5"
+        android:layout_column="3"
+        android:background="@drawable/btn_shape_ftv_menu" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/space"
+        android:layout_row="5"
+        android:layout_column="4"
+        android:layout_columnSpan="2"
+        android:layout_gravity="fill"
+        android:background="@drawable/btn_shape_ftv"
+        android:drawableStart="@drawable/keyboard_key_icon_fast_forward"
+        android:drawableLeft="@drawable/keyboard_key_icon_fast_forward"
+        app:iconPadding="@dimen/keyboard_icon_padding" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/delete"
+        android:layout_row="5"
+        android:layout_column="6"
+        android:layout_columnSpan="2"
+        android:layout_gravity="fill"
+        android:background="@drawable/btn_shape_ftv"
+        android:drawableStart="@drawable/keyboard_key_icon_rewind"
+        android:drawableLeft="@drawable/keyboard_key_icon_rewind"
+        android:nextFocusUp="@id/cr37"
+        app:iconPadding="@dimen/keyboard_icon_padding" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/clear"
+        android:layout_row="5"
+        android:layout_column="8"
+        android:layout_columnSpan="2"
+        android:layout_gravity="fill"
+        android:background="@drawable/btn_shape_ftv"
+        android:nextFocusRight="@id/lang" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/back"
+        android:layout_row="6"
+        android:layout_column="0"
+        android:layout_columnSpan="4"
+        android:layout_gravity="fill"
+        android:background="@drawable/btn_shape_ftv_long"
+        android:drawableStart="@drawable/keyboard_key_icon_back"
+        android:drawableLeft="@drawable/keyboard_key_icon_back"
+        android:nextFocusLeft="@+id/next"
+        android:nextFocusDown="@+id/cr02"
+        app:iconPadding="@dimen/keyboard_icon_padding" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cursorLeft"
+        android:background="@drawable/btn_shape_ftv_long"
+        android:nextFocusDown="@+id/cr04" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/cursorRight"
+        android:background="@drawable/btn_shape_ftv_long"
+        android:nextFocusDown="@+id/cr05" />
+
+    <com.amazon.tv.ftvstylekb.IconButton
+        android:id="@+id/next"
+        android:layout_row="6"
+        android:layout_column="6"
+        android:layout_columnSpan="4"
+        android:layout_gravity="fill"
+        android:background="@drawable/btn_shape_ftv_long"
+        android:drawableStart="@drawable/keyboard_key_icon_play"
+        android:drawableLeft="@drawable/keyboard_key_icon_play"
+        android:nextFocusRight="@+id/back"
+        android:nextFocusDown="@+id/cr07"
+        app:iconPadding="@dimen/keyboard_icon_padding" />
+
+</GridLayout>

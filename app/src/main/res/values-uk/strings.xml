@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Клавіатура FireTV</string>
+    <string name="app_layout_title">Розкладка клавіатури</string>
+    <string name="simple_ime">Клавіатура FireTV</string>
+    <string name="subtype_en_US">АБВ</string>
+    <string name="space">Пробіл</string>
+    <string name="delete">Видалити</string>
+    <string name="clear">Очистити</string>
+    <string name="next">Ввести</string>
+    <string name="go">Ввести</string>
+    <string name="search">Пошук</string>
+    <string name="send">Відіслати</string>
+    <string name="previous">Назад</string>
+    <string name="keyboard_layout_summary">Вибрати розкладка</string>
+    <string name="language_summary">Вибрати мову</string>
+    <string name="language_title">Мова</string>
+    <string name="app_settings">Налаштування клавіатури</string>
+    <string name="keyboard_layout_title">Розкладка клавіатури</string>
+    <string name="donate">PayPal</string>
+    <string name="about">Про автора:</string>
+    <string name="settings_title">Налаштування</string>
+    <string name="show_app_label_title">Показати значок</string>
+    <string name="show_app_label_summary">Показати значок програми на панелі запуску</string>
+</resources>

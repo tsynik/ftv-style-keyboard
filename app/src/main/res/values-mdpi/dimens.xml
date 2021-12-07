@@ -1,0 +1,13 @@
+<resources>
+    <dimen name="activity_horizontal_margin">24dip</dimen>
+    <dimen name="input_text_size">30sp</dimen>
+    <dimen name="input_text_size_full">19sp</dimen>
+    <dimen name="key_size">58.5dip</dimen>
+    <dimen name="key_pressed_padding">1.5dip</dimen>
+    <dimen name="icon_button_padding">3dip</dimen>
+    <dimen name="keyboard_padding">9dip</dimen>
+    <dimen name="keyboard_padding_bottom">9dip</dimen>
+    <dimen name="keyboard_margin">3dip</dimen>
+    <dimen name="icon_size_big">1.125px</dimen>
+    <dimen name="icon_size_medium">0.975px</dimen>
+</resources>

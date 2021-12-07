@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent">
+
+    <PreferenceCategory android:title="@string/settings_title">
+    <CheckBoxPreference
+        android:key="@string/show_app_label_pref_key"
+        android:summary="@string/show_app_label_summary"
+        android:title="@string/show_app_label_title"
+        android:defaultValue="true">
+    </CheckBoxPreference>
+
+        <ListPreference
+            android:key="@string/app_layout_pref_key"
+            android:title="@string/app_layout_title"
+            android:entries="@array/app_layout_entries"
+            android:entryValues="@array/app_layout_entries_values"
+            android:defaultValue="qwerty" />
+
+    </PreferenceCategory>
+</PreferenceScreen>

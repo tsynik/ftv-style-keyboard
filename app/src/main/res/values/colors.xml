@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_primary">#26282a</color>
+    <color name="color_primary_dark">#303F9F</color>
+    <color name="color_accent">#FF4081</color>
+    <color name="color_btn_ftv">#303030</color>
+    <color name="color_long_btn_ftv">#5a5a5a</color><!-- #676869 -->
+    <color name="color_background_ftv">#1a1a1a</color><!-- #373939 -->
+    <color name="color_background_ftv_tr">#bf1a1a1a</color>
+    <color name="color_transparent_rectangle">#30dadada</color>
+    <color name="color_transparent_shift">#99dadada</color>
+    <color name="color_transparent_shift_focused">#80303030</color>
+    <color name="color_btn_selected_ftv">#ffe6e6e6</color>
+    <color name="color_btn_pressed_ftv">#30e6e6e6</color>
+    <color name="color_transparent">#00ffffff</color>
+    <color name="keyboard_header_text_input_field">#ffdadada</color>
+    <color name="keyboard_hint_text_input_field">#c8dadada</color>
+    <color name="keyboard_header_form_current">#ffb2b2b2</color>
+    <color name="button_text_color">#ffc2c2c2</color>
+    <color name="text_view_color">#a0373939</color>
+</resources>

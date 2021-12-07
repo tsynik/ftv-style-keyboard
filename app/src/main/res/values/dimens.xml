@@ -1,0 +1,31 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="button_corners_radius">2dp</dimen>
+    <dimen name="corners_radius">3dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="input_text_size">20sp</dimen>
+    <dimen name="input_text_size_full">13.5sp</dimen>
+    <dimen name="key_size">39.0dip</dimen>
+    <dimen name="key_size_10x">444.0dip</dimen>
+    <dimen name="key_size_2x">84.0dip</dimen>
+    <dimen name="key_size_3x">125.0dip</dimen>
+    <dimen name="key_size_4x">174.0dip</dimen>
+    <dimen name="key_size_5x">207.0dip</dimen>
+    <dimen name="key_pressed_padding">1dp</dimen>
+    <dimen name="icon_button_padding">2dp</dimen>
+    <dimen name="keyboard_header_input_font_size">20.0sp</dimen>
+    <dimen name="keyboard_header_input_field_height">45.0dip</dimen>
+    <dimen name="keyboard_width">442.0dip</dimen>
+    <dimen name="keyboard_height">287.0dip</dimen>
+    <dimen name="keyboard_padding">6dp</dimen>
+    <dimen name="keyboard_padding_bottom">6dp</dimen>
+    <dimen name="keyboard_edit_text_height">40dp</dimen>
+    <dimen name="keyboard_edit_text_padding">8dp</dimen>
+    <dimen name="keyboard_margin">2dp</dimen>
+    <dimen name="icon_size_big">0.75px</dimen>
+    <dimen name="icon_size_medium">0.65px</dimen>
+    <dimen name="keyboard_icon_margin">1dip</dimen>
+    <dimen name="keyboard_icon_padding">3dip</dimen>
+</resources>

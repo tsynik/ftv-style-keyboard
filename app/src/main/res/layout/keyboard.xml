@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/keyboardMain"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/color_transparent"
+    android:focusable="true"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/keyboard_edit_text_padding"
+    android:paddingRight="@dimen/keyboard_edit_text_padding">
+
+    <TextView
+        android:id="@+id/preview"
+        android:layout_width="@dimen/keyboard_width"
+        android:layout_height="@dimen/keyboard_edit_text_height"
+        android:background="@drawable/preview_background"
+        android:gravity="center"
+        android:paddingLeft="@dimen/keyboard_edit_text_padding"
+        android:paddingRight="@dimen/keyboard_edit_text_padding"
+        android:text=""
+        android:textColor="@color/keyboard_header_form_current" />
+
+    <FrameLayout
+        android:id="@+id/keyboard1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
+</LinearLayout>

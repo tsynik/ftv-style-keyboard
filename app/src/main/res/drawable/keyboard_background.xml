@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:inset="@dimen/button_corners_radius">
+    <shape>
+        <solid android:color="@color/color_background_ftv" />
+        <corners android:radius="@dimen/corners_radius" />
+        <stroke
+            android:width="0.5dip"
+            android:color="@color/color_btn_ftv" />
+    </shape>
+</inset>
