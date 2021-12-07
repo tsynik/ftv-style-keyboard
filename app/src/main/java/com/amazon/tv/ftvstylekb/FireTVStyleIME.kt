@@ -851,12 +851,12 @@ class FireTVStyleIME : InputMethodService() {
             val extractedText = getExtractedText(ExtractedTextRequest(), 0)
             val start = extractedText.selectionStart
             val end = extractedText.selectionEnd
-            Log.d("*****", "commitText($text, $newCursorPosition)")
+//            Log.d("*****", "commitText($text, $newCursorPosition)")
             preview?.let {
                 val p1 = it.text.subSequence(0, start)
                 val p3 = it.text.subSequence(end, it.length())
                 it.text = "$p1$text$p3"
-                Log.d("*****", "commitText: preview.text ${it.text}")
+//                Log.d("*****", "commitText: preview.text ${it.text}")
                 if (it.text.isNotEmpty())
                     it.visibility = View.VISIBLE
                 else
