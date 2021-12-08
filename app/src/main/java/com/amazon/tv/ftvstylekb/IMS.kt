@@ -26,7 +26,7 @@ import com.amazon.tv.ftvstylekb.SettingsActivity.Companion.setLauncherIconShown
 import java.util.*
 
 
-class FireTVStyleIME : InputMethodService() {
+class IMS : InputMethodService() {
     private val firstFocus = R.id.cr00
     private var ic: InputConnection? = null
     private var kv: View? = null
@@ -87,14 +87,7 @@ class FireTVStyleIME : InputMethodService() {
     }
 
     override fun onCreateInputView(): View? {
-        //kv = (keyboard) ? setLang(keyRu) : setLang(keyEn);
         keyboardView = layoutInflater.inflate(R.layout.keyboard, null)
-        preview = keyboardView?.findViewById(R.id.preview)
-        //if (preview?.text.isNullOrEmpty())
-        //    preview?.visibility = View.INVISIBLE
-        //frameLayout = (FrameLayout) keyboardView.findViewById(R.id.keyboard1);
-        //frameLayout.addView(kv);
-        //keyboardView.invalidate();
         return null
     }
 
@@ -109,6 +102,7 @@ class FireTVStyleIME : InputMethodService() {
         val frameLayout = keyboardView?.findViewById<FrameLayout>(R.id.keyboard1)
         frameLayout?.addView(kv)
         keyboardView?.invalidate()
+        preview = keyboardView?.findViewById(R.id.preview)
         return keyboardView!!
     }
 
