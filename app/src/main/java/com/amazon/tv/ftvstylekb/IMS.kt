@@ -103,6 +103,8 @@ class IMS : InputMethodService() {
         frameLayout?.addView(kv)
         keyboardView?.invalidate()
         preview = keyboardView?.findViewById(R.id.preview)
+        if (preview?.text.isNullOrEmpty())
+            preview?.visibility = View.INVISIBLE
         return keyboardView!!
     }
 
@@ -139,7 +141,9 @@ class IMS : InputMethodService() {
         super.onStartInputView(editorinfo, flag)
         setImeOptions(resources, editorinfo)
         updateInputViewShown()
-        if (close) handleClose() else {
+        if (close)
+            handleClose()
+        else {
             ic = IcWrapper(currentInputConnection, false) // mutable: false
             cursorEnd = 0
             cursorStart = 0
@@ -160,7 +164,7 @@ class IMS : InputMethodService() {
                 handlerStart = Handler()
                 runnableStart = Runnable {
                     kv?.let { v ->
-                        if (isInputViewShown && !v.hasFocus() && v != null && !close) {
+                        if (isInputViewShown && v != null && !v.hasFocus() && !close) {
                             v.findViewById<View>(firstFocus).requestFocusFromTouch()
                             handlerStart?.postDelayed(runnableStart!!, 300)
                         }
@@ -882,10 +886,11 @@ class IMS : InputMethodService() {
             val extractedText = super.getExtractedText(request, flags)
             preview?.let {
                 it.text = extractedText.text
-//                if (it.text.isNotEmpty())
-//                    it.visibility = View.VISIBLE
-//                else
-//                    it.visibility = View.INVISIBLE
+
+                if (it.text.isNotEmpty())
+                    it.visibility = View.VISIBLE
+                else
+                    it.visibility = View.INVISIBLE
             }
             return extractedText
         }
