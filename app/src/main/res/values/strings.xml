@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FireTV style Keyboard</string>
+    <string name="app_name">FireTV Style Keyboard</string>
     <string name="app_layout_pref_key" translatable="false">app_layout</string>
     <string name="app_layout_title">Keyboard Layout</string>
     <string-array name="app_layout_entries">
@@ -11,7 +11,7 @@
         <item>qwerty</item>
     </string-array>
     <string name="about">About</string>
-    <string name="simple_ime">FireTV style Keyboard</string>
+    <string name="simple_ime">FireTV Style Keyboard</string>
     <string name="settings_title">Settings</string>
     <string name="subtype_en_US">ABC</string>
     <string name="previous">Back</string>

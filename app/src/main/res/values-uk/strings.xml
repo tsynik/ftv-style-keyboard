@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Клавіатура FireTV</string>
+    <string name="app_name">Клавіатура FireTV Style</string>
     <string name="app_layout_title">Розкладка клавіатури</string>
-    <string name="simple_ime">Клавіатура FireTV</string>
+    <string name="simple_ime">Клавіатура FireTV Style</string>
     <string name="subtype_en_US">АБВ</string>
     <string name="space">Пробіл</string>
     <string name="delete">Видалити</string>
