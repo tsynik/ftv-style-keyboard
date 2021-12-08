@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Клавиатура FireTV</string>
+    <string name="app_name">Клавиатура FireTV Style</string>
     <string name="app_layout_title">Раскладка клавиатуры</string>
     <string-array name="app_layout_entries">
         <item>АБВ</item>
         <item>ЙЦУКЕН</item>
     </string-array>
-    <string name="simple_ime">Клавиатура FireTV</string>
+    <string name="simple_ime">Клавиатура FireTV Style</string>
     <string name="settings_title">Настройки</string>
     <string name="show_app_label_title">Показывать иконку</string>
     <string name="show_app_label_summary">Показывать иконку приложения в лончере</string>
