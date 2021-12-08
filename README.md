@@ -1,5 +1,5 @@
 # ftv-style-keyboard
-Modern Kotlin version of com.example.semitop7.FireTVStyle keyoard
+Modern Kotlin version of com.example.semitop7.FireTVStyle keyboard
 
 Manual activation on FireTV via adb shell:
 ```
