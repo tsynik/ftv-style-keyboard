@@ -19,7 +19,6 @@
     <string name="keyboard_layout_title">Розкладка клавіатури</string>
     <string name="donate">PayPal</string>
     <string name="about">Про автора:</string>
-    <string name="settings_title">Налаштування</string>
     <string name="show_app_label_title">Показати значок</string>
     <string name="show_app_label_summary">Показати значок програми на панелі запуску</string>
 </resources>

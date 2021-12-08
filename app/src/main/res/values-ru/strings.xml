@@ -7,7 +7,6 @@
         <item>ЙЦУКЕН</item>
     </string-array>
     <string name="simple_ime">Клавиатура FireTV Style</string>
-    <string name="settings_title">Настройки</string>
     <string name="show_app_label_title">Показывать иконку</string>
     <string name="show_app_label_summary">Показывать иконку приложения в лончере</string>
     <string name="subtype_en_US">АБВ</string>
