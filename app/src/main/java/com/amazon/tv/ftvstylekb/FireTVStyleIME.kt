@@ -12,7 +12,6 @@ import android.text.SpannableString
 import android.text.style.RelativeSizeSpan
 import android.text.style.SuperscriptSpan
 import android.text.style.TextAppearanceSpan
-import android.util.Log
 import android.util.TypedValue
 import android.view.KeyEvent
 import android.view.View
@@ -99,7 +98,7 @@ class FireTVStyleIME : InputMethodService() {
         return null
     }
 
-    override fun onCreateCandidatesView(): View {
+    override fun onCreateCandidatesView(): View? {
         val context = applicationContext
         val prefs = PreferenceManager.getDefaultSharedPreferences(context)
         if (prefs.getString(context.getString(R.string.app_layout_pref_key), "qwerty") == "abc") {
@@ -239,7 +238,7 @@ class FireTVStyleIME : InputMethodService() {
         kv = layoutInflater.inflate(R.layout.grid_layout, null, false)
 
         kv?.let { kv ->
-            //style = true;
+            //style = true
             if (style) {
                 kv.setBackgroundResource(R.color.color_btn_ftv)
             }
@@ -258,7 +257,7 @@ class FireTVStyleIME : InputMethodService() {
                 val childButton = parentView?.getChildAt(i) as IconButton
                 val id = childButton.id
                 if (style) {
-                    childButton.setBackgroundResource(R.drawable.btn_shape_standart)
+                    childButton.setBackgroundResource(R.drawable.btn_shape)
                 }
                 childButton.setTextSize(TypedValue.COMPLEX_UNIT_PX, textDpSize.toFloat())
                 try {
@@ -710,7 +709,7 @@ class FireTVStyleIME : InputMethodService() {
     }
 
     override fun onKeyLongPress(keyCode: Int, event: KeyEvent): Boolean {
-        if (isInputViewShown && kv!!.hasFocus() && kv != null) {
+        if (isInputViewShown && kv != null && kv!!.hasFocus()) {
             when (keyCode) {
                 KeyEvent.KEYCODE_DPAD_CENTER, KeyEvent.KEYCODE_NUMPAD_ENTER, KeyEvent.KEYCODE_ENTER -> {
                     focusButton = window.currentFocus as IconButton?
@@ -851,18 +850,14 @@ class FireTVStyleIME : InputMethodService() {
             val extractedText = getExtractedText(ExtractedTextRequest(), 0)
             val start = extractedText.selectionStart
             val end = extractedText.selectionEnd
-//            Log.d("*****", "commitText($text, $newCursorPosition)")
             preview?.let {
                 val p1 = it.text.subSequence(0, start)
                 val p3 = it.text.subSequence(end, it.length())
                 it.text = "$p1$text$p3"
-//                Log.d("*****", "commitText: preview.text ${it.text}")
                 if (it.text.isNotEmpty())
                     it.visibility = View.VISIBLE
                 else
                     it.visibility = View.INVISIBLE
-
-
             }
             return super.commitText(text, newCursorPosition)
         }
