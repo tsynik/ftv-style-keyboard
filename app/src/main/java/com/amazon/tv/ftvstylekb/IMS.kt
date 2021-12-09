@@ -32,8 +32,10 @@ class IMS : InputMethodService() {
     private var kv: View? = null
     private var keyboardView: View? = null
     private var preview: TextView? = null
-    private var keyRu: Array<String> = LangSymbols.KEY_RU_YCU // LangSymbols.KEY_RU_ABV | LangSymbols.KEY_RU_YCU
-    private var keyEn: Array<String> = LangSymbols.KEY_EN_QWE // LangSymbols.KEY_EN_ABC | LangSymbols.KEY_EN_QWE
+    private var keyRu: Array<String> =
+        LangSymbols.KEY_RU_YCU // LangSymbols.KEY_RU_ABV | LangSymbols.KEY_RU_YCU
+    private var keyEn: Array<String> =
+        LangSymbols.KEY_EN_QWE // LangSymbols.KEY_EN_ABC | LangSymbols.KEY_EN_QWE
     private val allSymbols: Array<String> = LangSymbols.SYMBOLS
     private var cursorEnd = 0
     private var extractedText: ExtractedText? = null
@@ -144,7 +146,7 @@ class IMS : InputMethodService() {
         if (close)
             handleClose()
         else {
-            ic = IcWrapper(currentInputConnection, false) // mutable: false
+            ic = IcWrapper(currentInputConnection, false)
             cursorEnd = 0
             cursorStart = 0
             textLength = 0
@@ -163,9 +165,9 @@ class IMS : InputMethodService() {
             try {
                 handlerStart = Handler()
                 runnableStart = Runnable {
-                    kv?.let { v ->
-                        if (isInputViewShown && v != null && !v.hasFocus() && !close) {
-                            v.findViewById<View>(firstFocus).requestFocusFromTouch()
+                    kv?.let {
+                        if (isInputViewShown && !it.hasFocus() && !close) {
+                            it.findViewById<View>(firstFocus).requestFocusFromTouch()
                             handlerStart?.postDelayed(runnableStart!!, 300)
                         }
                     }
@@ -190,7 +192,12 @@ class IMS : InputMethodService() {
             spannableTextAndColorShift(btnShift, LangSymbols.А_А, textDpSizeFull)
             for (i in 0..39) {
                 val childButton = parentView?.getChildAt(i) as IconButton
-                spannableTextAndColor(childButton, childButton.text.toString(), textDpSize, colorsSup)
+                spannableTextAndColor(
+                    childButton,
+                    childButton.text.toString(),
+                    textDpSize,
+                    colorsSup
+                )
             }
             btnLang?.isAllCaps = shiftKey
             handlerCaps?.postDelayed(runnableCaps!!, 300)
@@ -284,14 +291,22 @@ class IMS : InputMethodService() {
                     false
                 })
                 childButton.setOnClickListener {
-                    if (firstButtonText != null && m == 1 && secondPress && !firstButtonText.equals(childButton.text.toString(), ignoreCase = true)) {
+                    if (firstButtonText != null && m == 1 && secondPress && !firstButtonText.equals(
+                            childButton.text.toString(),
+                            ignoreCase = true
+                        )
+                    ) {
                         m = 0
                         if (shiftKey || capsKey) {
-                            ic?.commitText(firstButtonText!!.substring(0, 1).uppercase(Locale.getDefault()), 1)
+                            ic?.commitText(
+                                firstButtonText!!.substring(0, 1).uppercase(Locale.getDefault()), 1
+                            )
                             if (!capsKey)
                                 mySetAllCaps(textDpSize)
                         } else {
-                            ic?.commitText(firstButtonText!!.substring(0, 1).lowercase(Locale.getDefault()), 1)
+                            ic?.commitText(
+                                firstButtonText!!.substring(0, 1).lowercase(Locale.getDefault()), 1
+                            )
                         }
                     }
                     extractedText = ic?.getExtractedText(ExtractedTextRequest(), 0)
@@ -300,8 +315,14 @@ class IMS : InputMethodService() {
                         textLength = et.text.length
                     }
                     when (id) {
-                        R.id.cursorLeft -> if (cursorStart > 0) ic?.setSelection(cursorStart - 1, cursorStart - 1)
-                        R.id.cursorRight -> if (cursorStart < textLength) ic?.setSelection(cursorStart + 1, cursorStart + 1)
+                        R.id.cursorLeft -> if (cursorStart > 0) ic?.setSelection(
+                            cursorStart - 1,
+                            cursorStart - 1
+                        )
+                        R.id.cursorRight -> if (cursorStart < textLength) ic?.setSelection(
+                            cursorStart + 1,
+                            cursorStart + 1
+                        )
                         R.id.lang -> {
                             if (symbol) {
                                 symbol = false
@@ -319,20 +340,36 @@ class IMS : InputMethodService() {
                             }
                         }
                         R.id.space -> ic?.commitText(" ", 1)
-                        R.id.delete -> if (ic?.getSelectedText(0).isNullOrEmpty()) ic?.deleteSurroundingText(deleteSpeed, 0) else ic?.commitText("", 1)
+                        R.id.delete -> if (ic?.getSelectedText(0).isNullOrEmpty())
+                            ic?.deleteSurroundingText(deleteSpeed, 0)
+                        else
+                            ic?.commitText("", 1)
                         R.id.clear -> try {
                             extractedText = ic?.getExtractedText(ExtractedTextRequest(), 0)
-                            extractedText?.let { et -> ic?.deleteSurroundingText(et.selectionStart - 0, et.text.length - et.selectionEnd) }
+                            extractedText?.let { et ->
+                                ic?.deleteSurroundingText(
+                                    et.selectionStart - 0,
+                                    et.text.length - et.selectionEnd
+                                )
+                            }
                             //ic.performContextMenuAction(android.R.id.selectAll);
                             //ic.commitText("", 1);
                         } catch (e: Exception) {
                         }
                         R.id.back -> handleClose()
-                        R.id.next -> if (inputType == InputType.TYPE_TEXT_FLAG_IME_MULTI_LINE || inputType == InputType.TYPE_TEXT_FLAG_MULTI_LINE) sendDownUpKeyEvents(KeyEvent.KEYCODE_ENTER) else ic!!.performEditorAction(actionEnter)
+                        R.id.next -> if (inputType == InputType.TYPE_TEXT_FLAG_IME_MULTI_LINE ||
+                            inputType == InputType.TYPE_TEXT_FLAG_MULTI_LINE
+                        )
+                            sendDownUpKeyEvents(KeyEvent.KEYCODE_ENTER)
+                        else
+                            ic?.performEditorAction(actionEnter)
                         R.id.symbols -> {
                             symbol = true
                             changeLang(allSymbols, textDpSize)
-                            if (keyboard) btnLang?.text = LangSymbols.ABV else btnLang?.text = LangSymbols.ABC
+                            if (keyboard)
+                                btnLang?.text = LangSymbols.ABV
+                            else
+                                btnLang?.text = LangSymbols.ABC
                             disableButton(btnSymbols, btnShift)
                             btnLang?.requestFocusFromTouch()
                         }
@@ -341,8 +378,12 @@ class IMS : InputMethodService() {
                             val childBtnText = childButton.text.toString()
                             ic?.let {
                                 if (doubleClickButton(childButton, childBtnText, textDpSize)) {
+                                    // No action with doubleClickButton
                                 } else if (shiftKey || capsKey) {
-                                    it.commitText(childBtnText.substring(0, 1).uppercase(Locale.getDefault()), 1)
+                                    it.commitText(
+                                        childBtnText.substring(0, 1).uppercase(Locale.getDefault()),
+                                        1
+                                    )
                                     //shiftKey=!shiftKey;
                                     if (!capsKey)
                                         mySetAllCaps(textDpSize)
@@ -351,14 +392,26 @@ class IMS : InputMethodService() {
                                     //spannableTextAndColorShift(btnShift, "аА", textDpSizeFull);
                                 } else {
                                     //ic.commitText(childBtnText.toLowerCase(), 1);
-                                    it.commitText(childBtnText.substring(0, 1).lowercase(Locale.getDefault()), 1)
+                                    it.commitText(
+                                        childBtnText.substring(0, 1).lowercase(Locale.getDefault()),
+                                        1
+                                    )
                                 }
                             }
                         }
                     }
                 }
             }
-            largeButtonTextSize(textDpSizeFull, btnNext, btnBack, btnSpace, btnLang, btnDelete, btnClear, btnSymbols)
+            largeButtonTextSize(
+                textDpSizeFull,
+                btnNext,
+                btnBack,
+                btnSpace,
+                btnLang,
+                btnDelete,
+                btnClear,
+                btnSymbols
+            )
             largeButtonTextBackground(btnNext, btnBack)
             spannableTextAndColorShift(btnShift, LangSymbols.А_А, textDpSizeFull)
         }
@@ -381,17 +434,24 @@ class IMS : InputMethodService() {
     private fun disableButton(vararg btn: IconButton?) {
         val alpha: Float = if (symbol) 0.25f else 1f
         for (b in btn) {
-            b?.let { ib ->
-                ib.isFocusable = !symbol
-                ib.isEnabled = !symbol
-                ib.alpha = alpha
-                ib.invalidate()
+            b?.let {
+                it.isFocusable = !symbol
+                it.isEnabled = !symbol
+                it.alpha = alpha
+                it.invalidate()
             }
         }
     }
 
-    private fun spannableTextAndColorShift(childButton: IconButton?, btnText: String, textDpSizeFull: Int) {
-        val shiftText: SpannableString = if (capsKey) SpannableString(btnText.uppercase(Locale.getDefault())) else SpannableString(btnText)
+    private fun spannableTextAndColorShift(
+        childButton: IconButton?,
+        btnText: String,
+        textDpSizeFull: Int
+    ) {
+        val shiftText: SpannableString =
+            if (capsKey) SpannableString(btnText.uppercase(Locale.getDefault())) else SpannableString(
+                btnText
+            )
         var focusedCapsOn = resources.getColor(R.color.color_background_ftv)
         var colorCapsOn = resources.getColor(R.color.button_text_color)
         var colorCapsOff = resources.getColor(R.color.color_transparent_shift)
@@ -404,35 +464,64 @@ class IMS : InputMethodService() {
             focusedCapsOn = focusedCapsOff
             focusedCapsOff = three
         }
-        val states = arrayOf(intArrayOf(android.R.attr.state_pressed), intArrayOf(android.R.attr.state_focused), intArrayOf(android.R.attr.state_hovered), intArrayOf())
+        val states = arrayOf(
+            intArrayOf(android.R.attr.state_pressed),
+            intArrayOf(android.R.attr.state_focused),
+            intArrayOf(android.R.attr.state_hovered),
+            intArrayOf()
+        )
         val colors1 = intArrayOf(
-                focusedCapsOn,
-                focusedCapsOn,
-                focusedCapsOn,
-                colorCapsOn
+            focusedCapsOn,
+            focusedCapsOn,
+            focusedCapsOn,
+            colorCapsOn
         )
         val colors2 = intArrayOf(
-                focusedCapsOff,
-                focusedCapsOff,
-                focusedCapsOff,
-                colorCapsOff
+            focusedCapsOff,
+            focusedCapsOff,
+            focusedCapsOff,
+            colorCapsOff
         )
         val myListColor1 = ColorStateList(states, colors1)
         val myListColor2 = ColorStateList(states, colors2)
         if (capsKey) {
-            shiftText.setSpan(TextAppearanceSpan(null, 0, 0, myListColor2, null), 0, 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            shiftText.setSpan(
+                TextAppearanceSpan(null, 0, 0, myListColor2, null),
+                0,
+                2,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
         } else {
-            shiftText.setSpan(TextAppearanceSpan(null, 0, 0, myListColor1, null), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-            shiftText.setSpan(TextAppearanceSpan(null, 0, 0, myListColor2, null), 1, 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            shiftText.setSpan(
+                TextAppearanceSpan(null, 0, 0, myListColor1, null),
+                0,
+                1,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            shiftText.setSpan(
+                TextAppearanceSpan(null, 0, 0, myListColor2, null),
+                1,
+                2,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
         }
         childButton?.text = shiftText
         childButton?.setTextSize(TypedValue.COMPLEX_UNIT_PX, textDpSizeFull.toFloat())
     }
 
-    private fun spannableTextAndColor(childButton: IconButton, chars: String?, textDpSize: Int, colorStateList: ColorStateList?) {
+    private fun spannableTextAndColor(
+        childButton: IconButton,
+        chars: String?,
+        textDpSize: Int,
+        colorStateList: ColorStateList?
+    ) {
         var btnText = chars
         val doubleSymbols: SpannableString
-        btnText = if (shiftKey) btnText?.uppercase(Locale.getDefault()) else btnText?.lowercase(Locale.getDefault())
+        btnText =
+            if (shiftKey)
+                btnText?.uppercase(Locale.getDefault())
+            else
+                btnText?.lowercase(Locale.getDefault())
         when (btnText?.lowercase(Locale.getDefault())) {
             "ї і",
             "і ї",
@@ -471,14 +560,33 @@ class IMS : InputMethodService() {
         //button.setTextColor(myListColor);
     }
 
-    private fun setSpannableString(btnText: SpannableString, textDpSize: Int, colorStateList: ColorStateList?, end: Int) {
-        btnText.setSpan(TextAppearanceSpan(null, 0, textDpSize, null, null), 1, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+    private fun setSpannableString(
+        btnText: SpannableString,
+        textDpSize: Int,
+        colorStateList: ColorStateList?,
+        end: Int
+    ) {
+        btnText.setSpan(
+            TextAppearanceSpan(null, 0, textDpSize, null, null),
+            1,
+            end,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
         btnText.setSpan(SuperscriptSpan(), 1, end, 0)
         btnText.setSpan(RelativeSizeSpan(0.4f), 1, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        btnText.setSpan(TextAppearanceSpan(null, 0, 0, colorStateList, null), 1, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        btnText.setSpan(
+            TextAppearanceSpan(null, 0, 0, colorStateList, null),
+            1,
+            end,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
     }
 
-    private fun doubleClickButton(childButton: IconButton, btnText: String, textDpSize: Int): Boolean {
+    private fun doubleClickButton(
+        childButton: IconButton,
+        btnText: String,
+        textDpSize: Int
+    ): Boolean {
         var secondText: String? = null
         doubleDouble = false
         when (btnText.lowercase(Locale.getDefault())) {
@@ -523,7 +631,9 @@ class IMS : InputMethodService() {
                 runnable = Runnable {
                     if (secondPress && m == 1) {
                         if (shiftKey) {
-                            ic?.commitText(firstButtonText!!.substring(0, 1).uppercase(Locale.getDefault()), 1)
+                            ic?.commitText(
+                                firstButtonText!!.substring(0, 1).uppercase(Locale.getDefault()), 1
+                            )
                             if (!capsKey)
                                 mySetAllCaps(textDpSize)
                         } else {
@@ -576,15 +686,25 @@ class IMS : InputMethodService() {
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         try {
-            if (firstButtonText != null && m == 1 && keyCode != KeyEvent.KEYCODE_DPAD_CENTER && keyCode != KeyEvent.KEYCODE_NUMPAD_ENTER && keyCode != KeyEvent.KEYCODE_ENTER) {
+            if (firstButtonText != null && m == 1 &&
+                keyCode != KeyEvent.KEYCODE_DPAD_CENTER &&
+                keyCode != KeyEvent.KEYCODE_NUMPAD_ENTER &&
+                keyCode != KeyEvent.KEYCODE_ENTER
+            ) {
                 m = 0
                 if (shiftKey || capsKey) {
-                    ic?.commitText(firstButtonText!!.substring(0, 1).uppercase(Locale.getDefault()), 1)
+                    ic?.commitText(
+                        firstButtonText!!.substring(0, 1).uppercase(Locale.getDefault()),
+                        1
+                    )
                     //shiftKey=!shiftKey;
                     if (!capsKey)
                         mySetAllCaps(textDpSize)
                 } else {
-                    ic?.commitText(firstButtonText!!.substring(0, 1).lowercase(Locale.getDefault()), 1)
+                    ic?.commitText(
+                        firstButtonText!!.substring(0, 1).lowercase(Locale.getDefault()),
+                        1
+                    )
                 }
             }
             if (isInputViewShown && kv!!.hasFocus() && kv != null) {
@@ -650,20 +770,29 @@ class IMS : InputMethodService() {
                 }
             } else if (isInputViewShown && kv != null) {
                 if (keyCode == KeyEvent.KEYCODE_BACK) {
-                    btnBack!!.requestFocus()
-                    btnBack!!.isPressed = true
-                    btnBack!!.invalidate()
+                    btnBack?.requestFocus()
+                    btnBack?.isPressed = true
+                    btnBack?.invalidate()
                 }
                 return true
             }
-            if (blockKey && (keyCode == KeyEvent.KEYCODE_ENTER || keyCode == KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE || keyCode == KeyEvent.KEYCODE_MEDIA_PLAY || keyCode == KeyEvent.KEYCODE_NUMPAD_ENTER)) return true
+            if (blockKey && (keyCode == KeyEvent.KEYCODE_ENTER ||
+                        keyCode == KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE ||
+                        keyCode == KeyEvent.KEYCODE_MEDIA_PLAY ||
+                        keyCode == KeyEvent.KEYCODE_NUMPAD_ENTER)
+            )
+                return true
         } catch (e: Exception) {
         }
-        return if (keyCode == KeyEvent.KEYCODE_ENTER) onKeyDown(KeyEvent.KEYCODE_DPAD_CENTER, event) else super.onKeyDown(keyCode, event)
+        return if (keyCode == KeyEvent.KEYCODE_ENTER) onKeyDown(
+            KeyEvent.KEYCODE_DPAD_CENTER,
+            event
+        ) else
+            super.onKeyDown(keyCode, event)
     }
 
     override fun onKeyUp(keyCode: Int, event: KeyEvent): Boolean {
-        if (isInputViewShown && kv!!.hasFocus() && kv != null) {
+        if (isInputViewShown && kv != null && kv!!.hasFocus()) {
             when (keyCode) {
                 KeyEvent.KEYCODE_DPAD_CENTER, KeyEvent.KEYCODE_NUMPAD_ENTER, KeyEvent.KEYCODE_ENTER -> {
                     focusButton = window.currentFocus as IconButton?
@@ -693,51 +822,71 @@ class IMS : InputMethodService() {
             }
         } else if (isInputViewShown && kv != null) {
             if (keyCode == KeyEvent.KEYCODE_BACK) {
-                btnBack!!.performClick()
+                btnBack?.performClick()
             } else {
-                kv!!.findViewById<View>(firstFocus).requestFocusFromTouch()
+                kv?.findViewById<View>(firstFocus)?.requestFocusFromTouch()
             }
             return true
         }
-        if (blockKey && (keyCode == KeyEvent.KEYCODE_ENTER || keyCode == KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE || keyCode == KeyEvent.KEYCODE_MEDIA_PLAY || keyCode == KeyEvent.KEYCODE_NUMPAD_ENTER)) {
+        if (blockKey && (keyCode == KeyEvent.KEYCODE_ENTER ||
+                    keyCode == KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE ||
+                    keyCode == KeyEvent.KEYCODE_MEDIA_PLAY ||
+                    keyCode == KeyEvent.KEYCODE_NUMPAD_ENTER)
+        ) {
             blockKey = false
             return true
         }
-        return if (keyCode == KeyEvent.KEYCODE_ENTER) onKeyUp(KeyEvent.KEYCODE_DPAD_CENTER, event) else super.onKeyUp(keyCode, event)
+        return if (keyCode == KeyEvent.KEYCODE_ENTER)
+            onKeyUp(KeyEvent.KEYCODE_DPAD_CENTER, event)
+        else
+            super.onKeyUp(keyCode, event)
     }
 
     override fun onKeyLongPress(keyCode: Int, event: KeyEvent): Boolean {
         if (isInputViewShown && kv != null && kv!!.hasFocus()) {
             when (keyCode) {
-                KeyEvent.KEYCODE_DPAD_CENTER, KeyEvent.KEYCODE_NUMPAD_ENTER, KeyEvent.KEYCODE_ENTER -> {
+                KeyEvent.KEYCODE_DPAD_CENTER,
+                KeyEvent.KEYCODE_NUMPAD_ENTER,
+                KeyEvent.KEYCODE_ENTER -> {
                     focusButton = window.currentFocus as IconButton?
                     if (focusButton!!.id == btnNext!!.id) {
                         handleClose()
                         sendDownUpKeyEvents(KeyEvent.KEYCODE_DPAD_DOWN)
                         blockKey = true
-                    } else btnShift!!.performLongClick()
+                    } else
+                        btnShift?.performLongClick()
                 }
-                KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE, KeyEvent.KEYCODE_MEDIA_PLAY -> {
+                KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE,
+                KeyEvent.KEYCODE_MEDIA_PLAY -> {
                     handleClose()
                     sendDownUpKeyEvents(KeyEvent.KEYCODE_DPAD_DOWN)
                 }
             }
             return true
         }
-        if (blockKey && (keyCode == KeyEvent.KEYCODE_ENTER || keyCode == KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE || keyCode == KeyEvent.KEYCODE_MEDIA_PLAY || keyCode == KeyEvent.KEYCODE_NUMPAD_ENTER)) return true
-        return if (keyCode == KeyEvent.KEYCODE_ENTER) onKeyLongPress(KeyEvent.KEYCODE_DPAD_CENTER, event) else super.onKeyLongPress(keyCode, event)
+        if (blockKey && (keyCode == KeyEvent.KEYCODE_ENTER ||
+                    keyCode == KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE ||
+                    keyCode == KeyEvent.KEYCODE_MEDIA_PLAY ||
+                    keyCode == KeyEvent.KEYCODE_NUMPAD_ENTER)
+        )
+            return true
+        return if (keyCode == KeyEvent.KEYCODE_ENTER) onKeyLongPress(
+            KeyEvent.KEYCODE_DPAD_CENTER,
+            event
+        ) else
+            super.onKeyLongPress(keyCode, event)
     }
 
     private fun focusMove(focus: Int, event: KeyEvent) {
         if (event.repeatCount % 2 == 0) {
-            window.currentFocus!!.focusSearch(focus).requestFocus()
+            window.currentFocus?.focusSearch(focus)?.requestFocus()
         }
     }
 
     private fun onKeyLongButton(btn: IconButton?, event: KeyEvent) {
         if (event.repeatCount == 0) {
-            btn!!.isPressed = true
-            btn.invalidate()
+            btn?.isPressed = true
+            btn?.invalidate()
         }
         if (event.repeatCount > 0) {
             if (btn!!.id == btnLang!!.id && event.repeatCount % 4 == 0) {
@@ -748,7 +897,8 @@ class IMS : InputMethodService() {
                 btn.performClick()
             }
             if (event.repeatCount % 17 == 0) {
-                if (btn.id == btnDelete!!.id) deleteSpeed++
+                if (btn.id == btnDelete!!.id)
+                    deleteSpeed++
             }
         }
     }
@@ -756,7 +906,10 @@ class IMS : InputMethodService() {
     private fun onKeyDownUp(btn: IconButton?, event: KeyEvent, keyCode: Int) {
         if (event.action == KeyEvent.ACTION_DOWN) {
             event.startTracking()
-            if (keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_MEDIA_PLAY || keyCode == KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE) {
+            if (keyCode == KeyEvent.KEYCODE_BACK ||
+                keyCode == KeyEvent.KEYCODE_MEDIA_PLAY ||
+                keyCode == KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE
+            ) {
                 btn?.requestFocus()
             }
             btn?.isPressed = true
@@ -810,7 +963,8 @@ class IMS : InputMethodService() {
                 actionEnter=EditorInfo.IME_ACTION_NONE;;
                 break;
         }*/
-        inputType = options.inputType and (InputType.TYPE_TEXT_FLAG_IME_MULTI_LINE or InputType.TYPE_TEXT_FLAG_MULTI_LINE)
+        inputType =
+            options.inputType and (InputType.TYPE_TEXT_FLAG_IME_MULTI_LINE or InputType.TYPE_TEXT_FLAG_MULTI_LINE)
         actionEnter = options.imeOptions and EditorInfo.IME_MASK_ACTION
         close = actionEnter == 0
     }
@@ -843,7 +997,8 @@ class IMS : InputMethodService() {
         requestHideSelf(0)
     }
 
-    private inner class IcWrapper(target: InputConnection?, mutable: Boolean) : InputConnectionWrapper(target, mutable) {
+    private inner class IcWrapper(target: InputConnection?, mutable: Boolean) :
+        InputConnectionWrapper(target, mutable) {
         override fun commitText(text: CharSequence, newCursorPosition: Int): Boolean {
             val extractedText = getExtractedText(ExtractedTextRequest(), 0)
             val start = extractedText.selectionStart
@@ -871,7 +1026,6 @@ class IMS : InputMethodService() {
                 val p2 = it.text.subSequence(start, end)
                 val p3 = it.text.subSequence(end + afterLength, it.length())
                 it.text = "$p1$p2$p3"
-
                 if (it.text.isNotEmpty())
                     it.visibility = View.VISIBLE
                 else
@@ -886,7 +1040,6 @@ class IMS : InputMethodService() {
             val extractedText = super.getExtractedText(request, flags)
             preview?.let {
                 it.text = extractedText.text
-
                 if (it.text.isNotEmpty())
                     it.visibility = View.VISIBLE
                 else
